@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
-# This bash script is pinging 5 times an ip address passed as an argument
-if [ -z "$1" ]; then
-  echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
-  exit 1
+# a script that ping the ip passed as an argument five times
+
+ip_name=$1
+if [ "$#" -ne 1 ]; then
+    echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
+    exit 1
+else
+    ping -c 5 "$ip_name"
 fi
-ping -c 5 "$1"
