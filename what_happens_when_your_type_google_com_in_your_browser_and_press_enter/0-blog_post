@@ -1,0 +1,67 @@
+What Happens When You Type https://www.google.com in Your Browser and Press Enter?
+When you type https://www.google.com into your browser and hit Enter, a series of events unfold almost instantly in the background to deliver Google’s homepage to your screen. The process involves multiple systems and protocols working together to ensure a smooth and secure user experience. Let's break it down step-by-step:
+
+1. DNS Request (Domain Name System)
+The first step is to convert the human-readable domain name (www.google.com) into an IP address that the computer can use. Here's how it works:
+
+The browser first checks its own DNS cache to see if it already knows the IP address.
+If not found, it sends the request to the DNS resolver (usually provided by your ISP).
+The resolver queries root DNS servers, which then direct the request to TLD (top-level domain) servers, like .com.
+Finally, the request is sent to the authoritative name server for google.com, which provides the IP address.
+Once the IP is obtained, the browser is ready to connect to Google's server.
+
+2. TCP/IP Connection (Transmission Control Protocol/Internet Protocol)
+With the IP address in hand, the browser initiates a TCP connection to the Google server. The connection is established through a three-way handshake:
+
+The client sends a SYN packet to the server to initiate communication.
+The server responds with a SYN-ACK packet to acknowledge the request.
+The client sends an ACK packet to confirm the connection.
+At this point, the connection is reliable, and data can be transferred between your browser and Google's server.
+
+3. Firewall
+During the connection, firewalls play a critical role in filtering traffic:
+
+Client-side firewall protects your device from unauthorized or malicious traffic.
+Server-side firewall ensures that only legitimate requests reach the server, blocking any harmful or suspicious packets.
+These firewalls work together to safeguard both the client and the server, ensuring secure communication.
+
+4. HTTPS/SSL (Secure Sockets Layer)
+Since the URL uses HTTPS, the connection is encrypted using SSL/TLS to ensure privacy and data integrity:
+
+The browser sends a request to initiate a secure connection.
+The server responds with an SSL/TLS certificate to authenticate its identity.
+The browser verifies the certificate with trusted Certificate Authorities to ensure the website is legitimate.
+Once verified, the browser and server exchange encryption keys, securing the data transmission.
+With SSL established, all communications between your browser and the server are encrypted.
+
+5. Load Balancer
+Once the secure connection is established, the request reaches Google’s network. Here, a load balancer ensures that traffic is distributed efficiently across multiple servers:
+
+The load balancer directs incoming requests to the best available server, preventing any one server from becoming overwhelmed.
+It may use strategies like round-robin, session persistence, or health checks to balance the load effectively.
+This helps maintain performance, reliability, and availability of the service.
+
+6. Web Server
+The request is then passed to a web server, such as Apache or Nginx:
+
+If the request is for static content (like images, CSS, or JavaScript), the web server responds directly.
+For dynamic content (like executing server-side scripts or querying a database), the request is forwarded to the application server.
+The web server’s job is to handle the basic HTTP/HTTPS traffic and serve static files or pass on requests for dynamic processing.
+
+7. Application Server
+The application server processes dynamic requests and runs the business logic:
+
+The application server executes backend code (e.g., in Python, Java, PHP) to generate the content that the user requested.
+It may also interact with a database to retrieve or update data.
+Once the processing is complete, the application server returns the results (usually HTML) to the web server.
+8. Database
+If the request requires data (e.g., retrieving search results or user information), the application server queries the database:
+
+The database stores crucial data for the website, such as user profiles, content, and configurations.
+The application server sends a SQL query to the database and waits for the result.
+Once the data is retrieved, it is sent back to the application server, which uses it to render the response.
+Conclusion
+After all these steps, the web server sends the final response back to your browser. Your browser then processes the HTML, CSS, and JavaScript, displaying Google’s homepage on your screen. All of this happens in a fraction of a second, but it involves a well-orchestrated sequence of systems and protocols working together to deliver the web page efficiently and securely.
+
+Understanding how these steps work is crucial for developers, as it helps them troubleshoot issues, optimize performance, and ensure secure communication across the web. Whether you're dealing with slow page loads or connection errors, knowing what happens behind the scenes gives you valuable insight into how the web operates.
+
